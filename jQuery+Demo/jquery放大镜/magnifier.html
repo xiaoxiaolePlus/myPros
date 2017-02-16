@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>jquery 放大镜</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <style type="text/css">
+	    	*{
+	    		padding: 0px;
+	    		margin: 0px;
+	    	}
+	    	#left_div{
+	    		position: relative;
+	    		width: 400px;
+	    		height: 400px;
+	    		background: url(400.jpg) no-repeat;
+	    		float: left;
+	    	}
+	    	#left_div #cover{
+	    		width: 400px;
+	    		height: 400px;
+	    		position: absolute;
+	    		top: 0px;
+	    		left: 0px;
+	    		z-index: 2;
+	    		/*background: red;*/
+	    	}
+	    	#left_div #slider{
+	    		display: none;
+	    		width: 200px;
+	    		height: 200px;
+	    		background: white;
+	    		opacity: 0.7;
+	    		filter: alpha(opacity=70);
+	    		position: absolute;
+	    		top: 0px;
+	    		left: 0px;
+	    	}
+	    	#right_div{
+	    		display: none;
+	    		width: 400px;
+	    		height: 400px;
+	    		position: relative;
+	    		overflow: hidden;
+	    		margin-left: 20px; 
+	    		/*border: 1px solid black;*/
+	    		float: left;
+	    	}
+	    	#right_div #detail{
+	    		position: absolute;
+	    		top: 0px;
+	    		left: 0px;
+	    	}
+	    </style>
+	    <script type="text/javascript" src="../jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+
+				$('#cover').mousemove(function(e){
+					var m_x = e.offsetX || e.layerX;
+					var m_y = e.offsetY || e.layerY;
+					var sliderX = m_x - 100;
+					var sliderY = m_y - 100; 
+					sliderX = sliderX < 0? 0 : sliderX;
+					sliderX = sliderX > 200? 200:sliderX;
+					sliderY = sliderY < 0? 0 : sliderY;
+					sliderY = sliderY > 200? 200 : sliderY;
+
+					$('#slider').css({'top': sliderY + 'px', 'left': sliderX + 'px'});
+					var detailX = -2 * sliderX;
+					var detailY = -2 * sliderY;
+					$('#detail').css({'top': detailY + 'px', 'left': detailX + 'px'});
+				});
+				$('#cover').hover(function(){
+					$('#slider').show();
+					$('#right_div').show();
+				}, function(){
+					$('#slider').hide();
+					$('#right_div').hide();
+				});
+			});
+		</script>
+	</head>
+	<body>
+
+		<div id="left_div">
+			<div id="slider"></div>
+			<div id="cover"></div>
+		</div>
+		<div id="right_div">
+			<img id="detail" src="800.jpg"/>
+		</div>
+	</body>
+</html>

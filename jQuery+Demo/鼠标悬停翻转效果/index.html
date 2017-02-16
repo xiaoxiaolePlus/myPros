@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>无标题文档</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <style type="text/css">
+	    	*{
+	    		padding: 0;
+	    		margin: 0;
+	    	}
+	    	li {
+	    		list-style: none;
+	    	}
+	    	#main{
+	    		width: 920px;
+	    		height: 515px;
+	    		border: 1px solid #999;
+	    		margin: 50px auto;
+	    		box-shadow: 0px 0px 10px #ccc;
+	    	}
+	    	#main .title{
+	    		width: 100%;
+	    		height: 35px;
+	    		text-align: center;
+	    		line-height: 35px;
+	    		border-bottom: 2px solid #999;
+	    		font-size: 20px;
+	    		font-family: 微软雅黑;
+	    	}
+	    	#main .show{
+	    		width: 920px;
+	    		height: 885px;
+	    		padding: 0px 20px;
+	    		overflow: hidden;
+	    	}
+	    	#main .show li{
+	    		width: 200px;
+	    		height: 200px;
+	    		float: left;
+	    		overflow: hidden;
+	    		position: relative;
+	    		margin: 10px 10px 0px 10px;
+	    		cursor: pointer;
+	    	}
+	    	#main .show li img{
+	    		width: 200px;
+	    		height: 200px;
+	    		position: absolute;
+	    		top: 0px;
+	    		left: 0px;
+	    		z-index: 3;
+
+	    	}
+	    	#main .show li span{
+	    		display: block;
+	    		position: absolute;
+	    		width: 0px;
+	    		height: 200px;
+	    		line-height: 200px;
+	    		text-align: center;
+	    		color: white;
+	    		font-family: 微软雅黑;
+	    		font-weight: 700;
+	    		top: 0px;
+	    		left: 100px;
+	    		z-index: 2;
+	    		display: none;
+	    		background: orange;
+	    		opacity: 0.7;
+	    		filter: (opacity=70);
+	    	}
+	    </style>
+	    <script type="text/javascript" src="../jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var lis = $("#main ul.show li");
+				var imgs = lis.find("img");
+				var spans = lis.find("span");
+				lis.each(function(i){
+					$(this).mouseover(function(){
+						imgs.eq(i).stop();
+						spans.eq(i).stop();
+						imgs.eq(i).animate({
+							width: 0,
+							left: 100
+						}, 100,'', function(){
+							imgs.eq(i).hide();
+							spans.eq(i).show().animate({
+								width: 200,
+								left: 0
+							},180);
+						});
+					});
+
+					$(this).mouseout(function(){
+						imgs.eq(i).stop();
+						spans.eq(i).stop();
+						spans.eq(i).animate({
+							width: 0,
+							left: 100
+						}, 80, '', function(){
+							spans.eq(i).hide();
+							imgs.eq(i).show().animate({
+								width: 200,
+								left: 0
+							}, 100);
+						});
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="main">
+			<div class="title"> 图片展 </div>
+			<ul class="show">
+				<li>
+					<img src="images/1.jpg"/>
+					<span>我只想安安静静做一个美女子</span>
+				</li>
+				<li>
+					<img src="images/2.jpg"/>
+					<span>说明2</span>
+				</li>
+				<li>
+					<img src="images/3.jpg"/>
+					<span>说明3</span>
+				</li>
+				<li>
+					<img src="images/4.jpg"/>
+					<span>说明4</span>
+				</li>
+				<li>
+					<img src="images/5.jpg"/>
+					<span>说明5</span>
+				</li>
+				<li>
+					<img src="images/6.jpg"/>
+					<span>说明6</span>
+				</li>
+				<li>
+					<img src="images/7.jpg"/>
+					<span>说明7</span>
+				</li>
+				<li>
+					<img src="images/8.jpg"/>
+					<span>说明8</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

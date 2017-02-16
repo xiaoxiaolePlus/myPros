@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>menu tree</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <style type="text/css">
+	    	*{
+	    		padding: 0px;
+	    		margin: 0px;
+	    	}
+	    	#focusPic{
+	    		width: 990px;
+	    		height: 330px;
+	    		margin: 0 auto;
+	    		background: black;
+	    	}
+	    	#focusPic li{
+	    		width: 330px;
+	    		height: 330px;
+	    		float: left;
+	    		list-style: none;
+	    	}
+	    	#focusPic img{
+	    		float: left;
+	    	}
+	    	#focusPic img.specal1
+	    	{
+	    		width: 165px;
+	    		height: 165px;
+	    	}
+	    	#focusPic img.specal2{
+	    		width: 330px;
+	    		height: 165px;
+	    	}
+	    </style>
+	    <script type="text/javascript" src="../jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#focusPic img').mouseover(function(){
+					$('#focusPic img').fadeTo(0, 0.6);
+					$(this).fadeTo(0,1);
+				});
+				$('#focusPic img').mouseout(function(){
+					$('#focusPic img').fadeTo(0, 1);
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div id="focusPic">
+			<ul>
+				<li><img src="images/1.jpg"/></li>
+				<li>
+					<img src="images/2.jpg" class="specal1"/>
+					<img src="images/3.jpg" class="specal1"/>
+					<img src="images/4.jpg" class="specal1"/>
+					<img src="images/5.jpg" class="specal1"/>
+				</li>
+				<li> 
+					<img src="images/6.jpg" class="specal2"/>
+					<img src="images/7.jpg" class="specal2"/>
+				</li>
+			</ul>		
+		</div>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.wrap {
+    //background-color: red;
+    width: 300px;
+    height: 500px;
+    margin: 20px auto;
+}
+.left {
+    float: left;
+    background-color: rgba(1,1,1,0.3);
+    width: 30%;
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+}
+.left ul {
+    list-style: none;
+    text-align: center;
+    margin: 3px;
+}
+.active {
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 5px;
+}
+#right {
+    float: left;
+    background-color: rgba(1,1,1,0.3);
+    width: 70%;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+}

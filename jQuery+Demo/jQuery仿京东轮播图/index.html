@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>京东图片轮播</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style type="text/css">
+			*{
+		    		padding: 0px;
+		    		margin: 0px;
+		    	}
+		    	#flash{
+		    		width: 710px;
+		    		height: 475px;
+		    		margin: 0 auto;
+		    		border: 1px solid #000;
+		    		position: relative;
+		    	}
+		    	#flash img{
+		    		position: absolute;
+		    		top: 0px;
+		    		left: 0px;
+		    		opacity: 0.5;
+		    		filter: (opacity=50);
+		    		display: none;
+		    	}
+		    	#flash img.cur{
+		    		opacity: 1;
+		    		filter: (opacity=100);
+		    		display: block;
+		    	}
+		    	#flash ul{
+		    		position: absolute;
+		    		left: 301px;
+		    		top: 428px; 
+		    	}
+		    	#flash ul li{
+		    		float: left;
+		    		width: 18px;
+		    		height: 18px;
+		    		list-style: none;
+		    		color: white;
+		    		font-size: 12px;
+		    		font-family: arial;
+		    		border-radius: 9px;
+		    		margin-right: 4px;
+		    		text-align: center;
+		    		line-height: 18px;
+		    		background: #3E3E3E;
+		   	    }
+		   	    #flash ul li.cur{
+		   	    	background: red;
+		   	    }
+		</style>
+		<script type="text/javascript" src="../jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var index = 0;
+				function change() {
+					index++;
+					if (index > 4){
+						index = 0;
+					}
+					$("#flash a img").fadeTo(0, 0.5).hide();
+					$("#flash a").eq(index).find("img").show().fadeTo(200, 1);
+					//$('#flash img').eq(index).show().fadeTo(200, 1).siblings('img').fadeTo(0, 0.5).hide();
+				
+					$('#flash ul li').eq(index).addClass("cur").siblings('li').removeClass("cur");
+				}
+				var timer = setInterval(change, 1000);
+				$('#flash').hover(function(){
+					clearInterval(timer);
+				}, function(){
+					timer = setInterval(change, 1000);
+				});
+				$('#flash ul li').click(function(){
+					index = $(this).index();
+					$(this).addClass('cur').siblings('li').removeClass('cur');
+					$("#flash a img").fadeTo(0, 0.5).hide();
+					$("#flash a").eq(index).find("img").show().fadeTo(200, 1);
+					//$('#flash img').eq(index).show().fadeTo(200, 1).siblings('img').fadeTo(0, 0.5).hide();
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="flash">
+			<a href=""><img src="img/1.jpg" class="cur" /></a>
+			<a href=""><img src="img/2.jpg" /></a>
+			<a href=""><img src="img/3.jpg" /></a>
+			<a href=""><img src="img/4.jpg" /></a>
+			<a href=""><img src="img/5.jpg" /></a>
+			<!-- <a href=""><img src="img/6.jpg" /></a> -->
+
+			<ul>
+				<li class="cur">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<!-- <li>6</li> -->
+			</ul>
+		</div>
+	</body>
+
+</html>
